@@ -24,3 +24,18 @@ node server.js     # → http://localhost:8080
 ```
 
 This version is **not** used by GitHub Pages (Pages serves static files only).
+
+## Deploy with real (server-side) auth — Render
+
+Pages can't run Node, so for real login — password kept in env vars, not in page source — deploy `server.js` to Render:
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/umil08/beujaya)
+
+1. Click the button → sign in to Render (free; you can use your GitHub account).
+2. Render reads `render.yaml` automatically. When prompted, set:
+   - `BEUJAYA_USER` — your username
+   - `BEUJAYA_PASS` — your password (never stored in the repo)
+3. Create the service and wait ~2–3 min → you get a URL like `https://beujaya.onrender.com`.
+
+Notes: the free instance sleeps after ~15 min idle (first request after is a slow cold start), and in-memory sessions reset when it restarts.
+

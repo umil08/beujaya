@@ -121,6 +121,8 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`BEUJAYA running → http://localhost:${PORT}`);
-  console.log(`Demo login → user: ${USER}  pass: ${PASS}`);
+  console.log(`BEUJAYA running on port ${PORT}`);
+  if (!process.env.BEUJAYA_PASS) {
+    console.log('⚠ Using default demo credentials — set BEUJAYA_USER / BEUJAYA_PASS env vars in production.');
+  }
 });

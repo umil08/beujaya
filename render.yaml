@@ -1,0 +1,17 @@
+# Render Blueprint — deploys the Node server (server.js) with real session auth.
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: beujaya
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /
+    envVars:
+      # Set your own credentials in the Render dashboard at deploy time.
+      # They live in Render's env, never in the repo.
+      - key: BEUJAYA_USER
+        sync: false
+      - key: BEUJAYA_PASS
+        sync: false
